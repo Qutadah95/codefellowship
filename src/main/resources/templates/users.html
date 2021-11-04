@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<style>
+    body{
+        background:whitesmoke;
+    }
+</style>
+<body>
+<header th:replace="head/header"></header>
+<main>
+    <div th:each="appUser : ${appUsers}" style="border-style: solid; text-align: center;">
+        <a th:href="@{/user/{id}(id=${appUser.getId()})}"><img style="width: 100px;" src="https://cdn.pixabay.com/photo/2015/10/05/22/37/blank-profile-picture-973460_1280.png" alt="no pic"/></a>
+        <h2 th:text="'Name : ' + ${appUser.getFirstName()} + '  ' + ${appUser.getLastName()}"></h2>
+        <p th:text="'Date of Birth : ' + ${appUser.getDateOfBirth()}" ></p>
+        <p th:text="'Bio : ' + ${appUser.getBio()}"></p>
+    </div>
+</main>
+</body>
+</html>
