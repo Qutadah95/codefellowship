@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<header th:replace="head/header"></header>
+<main>
+  <div th:each="user:${followedUsers}">
+    <div th:each="post:${user.getPosts()}" >
+      <div th:text="${user.getUsername}" ></div>
+      <label>The Post: </label>
+      <span  th:text=" ${post.getBody()}"></span>
+      <div><span th:text="${post.getCreatedAt()}"></span></div>
+    </div>
+  </div>
+  </div>
+</main>
+
+</body>
+</html>

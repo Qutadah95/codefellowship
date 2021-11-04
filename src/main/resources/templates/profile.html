@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Profile</title>
+</head>
+<style>
+    body{
+        background:#EEEBDD;
+    }
+    #userInfo{
+        text-align: center;
+    }
+</style>
+<body>
+<header >
+    <div th:replace="head/header"></div>
+</header>
+<div id="userInfo">
+    <img style="width: 200px;" src="https://cdn.pixabay.com/photo/2015/10/05/22/37/blank-profile-picture-973460_1280.png" alt="no pic"/>
+    <p>User Name : <span th:text="${user.username}"></span></p>
+    <p>First Name : <span th:text="${user.firstName}"></span></p>
+    <p>Last Name : <span th:text="${user.lastName}"></span></p>
+    <p>BirthDate : <span th:text="${user.dateOfBirth}"></span></p>
+    <p>Bio : <span th:text="${user.bio}"></span></p>
+</div>
+<br/><br/><br/>
+<div>
+    <form style="text-align: center; border-style: inset; margin-left: 27%; margin-right: 27%; padding: 1.5%" method="POST" action="/addpost">
+        <label for="postBody">Write a new Post</label>
+        <input id="postBody" name="body" type="text">
+        <button type="submit">POST</button>
+    </form>
+</div>
+<div style="text-align: center;" th:each="post: ${user.posts}">
+    <p>Date : <span th:text="${post.createdAt}"></span></p>
+    <p>The Post : <span th:text="${post.body}"></span></p>
+</div>
+</body>
+</html>

@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<style>
+    body{
+        background:whitesmoke;
+    }
+</style>
+<body>
+<header th:replace="head/header"></header>
+<main>
+    <div>
+        <img style="width: 200px;" src="https://cdn.pixabay.com/photo/2015/10/05/22/37/blank-profile-picture-973460_1280.png" alt="no pic"/>
+        <p>User Name : <span th:text="${user.username}"></span></p>
+        <p>First Name : <span th:text="${user.firstName}"></span></p>
+        <p>Last Name : <span th:text="${user.lastName}"></span></p>
+        <p>BirthDate : <span th:text="${user.dateOfBirth}"></span></p>
+        <p>Bio : <span th:text="${user.bio}"></span></p>
+        <div>
+            <form th:action="@{/follow/{id}(id=${user.getId()})}" method="POST">
+                <input type="submit" value="Follow">
+            </form>
+        </div>
+    </div>
+    <br/><br/><br/>
+    <div style="text-align: center;" th:each="post: ${user.posts}">
+        <p>Date : <span th:text="${post.createdAt}"></span></p>
+        <p>The Post : <span th:text="${post.body}"></span></p>
+    </div>
+</main>
+</body>
+</html>
